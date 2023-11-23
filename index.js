@@ -41,9 +41,13 @@ import { fileURLToPath } from "url";
         content: userInput,
       },
     ],
+    stream: true,
   });
 
-  console.log(response.choices[0].message.content);
+  for await (const message of response) {
+    process.stdout.write(message.choices[0].delta.content ?? "");
+  }
+  process.stdout.write("\n");
 })();
 
 function getOS(platform) {
