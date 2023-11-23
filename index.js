@@ -42,6 +42,7 @@ import { fileURLToPath } from "url";
       },
     ],
     stream: true,
+    temperature: 0,
   });
 
   for await (const message of response) {
